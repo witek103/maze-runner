@@ -19,6 +19,7 @@ fn main() -> Result<(), String> {
     let mut api = MazeRunnerApi::new()?;
 
     print_send(&mut api, MazeRunnerRequest::Initialize)?;
+    print_send(&mut api, MazeRunnerRequest::GetButtonsState)?;
     print_send(&mut api, MazeRunnerRequest::GetWallLeft)?;
     print_send(&mut api, MazeRunnerRequest::GetWallFront)?;
     print_send(&mut api, MazeRunnerRequest::GetWallRight)?;
@@ -46,6 +47,7 @@ fn main() -> Result<(), String> {
     print_send(&mut api, MazeRunnerRequest::GetWallFront)?;
     print_send(&mut api, MazeRunnerRequest::GetWallRight)?;
     print_send(&mut api, MazeRunnerRequest::RotateLeft90)?;
+    print_send(&mut api, MazeRunnerRequest::GetButtonsState)?;
 
     Ok(())
 }
