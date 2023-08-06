@@ -18,6 +18,18 @@ bitflags! {
     }
 }
 
+bitflags! {
+    #[derive(Serialize, Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, Hash)]
+    #[serde(transparent)]
+    pub struct CellState: u8 {
+        const NorthWall = 0b00000001;
+        const EastWall = 0b00000010;
+        const SouthWall = 0b00000100;
+        const WestWall = 0b00001000;
+        const Visited = 0b00010000;
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum MazeRunnerRequest {
     Initialize,
@@ -28,6 +40,20 @@ pub enum MazeRunnerRequest {
     GetWallRight,
     GetWallLeft,
     GetButtonsState,
+    UpdateCellState {
+        x: usize,
+        y: usize,
+        state: CellState,
+    },
+    ClearCell {
+        x: usize,
+        y: usize,
+    },
+    UpdateCellValue {
+        x: usize,
+        y: usize,
+        value: i32,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug)]
