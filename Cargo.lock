@@ -105,6 +105,7 @@ name = "maze-runner"
 version = "0.5.0"
 dependencies = [
  "bitflags",
+ "heapless",
  "postcard",
  "rand",
  "serde",

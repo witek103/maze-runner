@@ -1,13 +1,13 @@
 mod communication;
-mod random_runner;
+mod floodfill_runner;
 
 use communication::*;
-use random_runner::RandomRunner;
+use floodfill_runner::FloodfillRunner;
 
 fn main() -> Result<(), String> {
     let mut api = MazeRunnerApi::new()?;
 
-    let mut runner = RandomRunner::new(&mut api)?;
+    let mut runner = FloodfillRunner::new(&mut api)?;
 
     runner.run()?;
 
