@@ -31,6 +31,14 @@ bitflags! {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+pub enum DistanceSensor {
+    FrontLeft,
+    FrontRight,
+    DiagonalLeft,
+    DiagonalRight,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum MazeRunnerRequest {
     Initialize,
     MoveForward,
@@ -54,6 +62,9 @@ pub enum MazeRunnerRequest {
         y: usize,
         value: i32,
     },
+    GetDistanceReadout {
+        sensor: DistanceSensor,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -62,6 +73,7 @@ pub enum MazeRunnerResponse {
     Error,
     WallDetected(bool),
     Buttons(ButtonsState),
+    Distance(u16),
 }
 
 pub struct MazeRunnerApi {
